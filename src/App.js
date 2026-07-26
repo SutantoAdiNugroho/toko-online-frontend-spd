@@ -9,6 +9,8 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import PrivateRoute from './components/PrivateRoute';
 import GuestRoute from './components/GuestRoute';
+import Analytics from './components/Analytics';
+
 import './App.css';
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
+          <Analytics />
           <Routes>
             <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
             <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
