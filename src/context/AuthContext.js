@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/axiosConfig';
 
 const AuthContext = createContext();
 
@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const res = await api.post('/auth/login', { username, password });
       const { token, user } = res.data;
       localStorage.setItem('token', token);
       localStorage.setItem('username', user.username);
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', { username, password });
+      const res = await api.post('/auth/register', { username, password });
       return { success: true, msg: res.data.msg };
     } catch (err) {
       return { success: false, msg: err.response?.data?.msg || 'Registrasi gagal' };
