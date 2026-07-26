@@ -16,7 +16,7 @@ const Register = () => {
     setMessage('');
     const result = await register(username, password);
     if (result.success) {
-      setMessage(result.msg);
+      setMessage('✅ Registrasi berhasil! Anda akan diarahkan ke halaman Login dalam 2 detik...');
       setTimeout(() => navigate('/login'), 2000);
     } else {
       setError(result.msg);
@@ -26,9 +26,9 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <div className="auth-brand">🛍️ TokoAdi</div>
         <h2>Create Account</h2>
         <p className="subtitle">Start your journey with us</p>
-
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Username</label>
@@ -41,7 +41,6 @@ const Register = () => {
               required
             />
           </div>
-
           <div className="form-group">
             <label>Password</label>
             <input
@@ -53,13 +52,10 @@ const Register = () => {
               required
             />
           </div>
-
           <button type="submit" className="auth-button">Sign Up</button>
         </form>
-
         {message && <div className="message-success">{message}</div>}
         {error && <div className="message-error">{error}</div>}
-
         <div className="auth-link">
           Already have an account? <Link to="/login">Login</Link>
         </div>

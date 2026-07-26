@@ -23,9 +23,9 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <div className="auth-brand">🛍️ TokoAdi</div>
         <h2>Welcome Back</h2>
         <p className="subtitle">Login to your account</p>
-
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Username</label>
@@ -38,7 +38,6 @@ const Login = () => {
               required
             />
           </div>
-
           <div className="form-group">
             <label>Password</label>
             <input
@@ -50,12 +49,9 @@ const Login = () => {
               required
             />
           </div>
-
           <button type="submit" className="auth-button">Sign In</button>
         </form>
-
         {error && <div className="message-error">{error}</div>}
-
         <div className="auth-link">
           Don't have an account? <Link to="/register">Register</Link>
         </div>
