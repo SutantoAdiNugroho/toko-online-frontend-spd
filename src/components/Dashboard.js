@@ -13,17 +13,24 @@ const Dashboard = () => {
         setData(res.data.msg);
       } catch (err) {
         console.error(err);
+        setData('Gagal mengambil data (pastikan backend menyala)');
       }
     };
     fetchProtected();
   }, []);
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <p>Selamat datang, {user?.username}!</p>
-      <p>Protected data backend: {data}</p>
-      <button onClick={logout}>Logout</button>
+    <div className="auth-container">
+      <div className="dashboard-container">
+        <h2>Dashboard</h2>
+        <p className="greeting">Hello, <strong>{user?.username}</strong>! 👋</p>
+        
+        <div className="protected-data">
+          <strong>Protected Data:</strong> {data}
+        </div>
+
+        <button onClick={logout} className="logout-btn">Logout</button>
+      </div>
     </div>
   );
 };

@@ -21,15 +21,45 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
-      </form>
-      {error && <p style={{color:'red'}}>{error}</p>}
-      <p>Belum punya akun? <Link to="/register">Register</Link></p>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Welcome Back</h2>
+        <p className="subtitle">Login to your account</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              className="auth-input"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              className="auth-input"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="auth-button">Sign In</button>
+        </form>
+
+        {error && <div className="message-error">{error}</div>}
+
+        <div className="auth-link">
+          Don't have an account? <Link to="/register">Register</Link>
+        </div>
+      </div>
     </div>
   );
 };

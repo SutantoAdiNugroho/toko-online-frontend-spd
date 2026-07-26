@@ -24,16 +24,46 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <button type="submit">Register</button>
-      </form>
-      {message && <p style={{color:'green'}}>{message}</p>}
-      {error && <p style={{color:'red'}}>{error}</p>}
-      <p>Sudah punya akun? <Link to="/login">Login</Link></p>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Create Account</h2>
+        <p className="subtitle">Start your journey with us</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              className="auth-input"
+              placeholder="Choose a username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              className="auth-input"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="auth-button">Sign Up</button>
+        </form>
+
+        {message && <div className="message-success">{message}</div>}
+        {error && <div className="message-error">{error}</div>}
+
+        <div className="auth-link">
+          Already have an account? <Link to="/login">Login</Link>
+        </div>
+      </div>
     </div>
   );
 };
